@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+
+    <persistence-unit name="mysql">
+        <provider>com.impetus.kundera.KunderaPersistence</provider>
+        <class>com.kharevich.domain.User</class>
+        <properties>
+            <property name="kundera.client.lookup.class" value="com.impetus.client.rdbms.RDBMSClientFactory" />
+            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/angularjs" />
+            <property name="hibernate.connection.username" value="root" />
+            <property name="hibernate.connection.password" value="" />
+            <property name="hibernate.current_session_context_class"
+                      value="org.hibernate.context.ThreadLocalSessionContext" />
+        </properties>
+    </persistence-unit>
+</persistence>
