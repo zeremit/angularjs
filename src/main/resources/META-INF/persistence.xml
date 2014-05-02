@@ -16,8 +16,6 @@
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/angularjs" />
             <property name="hibernate.connection.username" value="root" />
             <property name="hibernate.connection.password" value="" />
-            <property name="hibernate.current_session_context_class"
-                      value="org.hibernate.context.ThreadLocalSessionContext" />
         </properties>
     </persistence-unit>
 </persistence>
