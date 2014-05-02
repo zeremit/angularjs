@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>My HTML File</title>
@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<p ng-app>Nothing here {{'yet' + '!'}}</p>
 <p>Nothing here {{'yet' + '!'}}</p>
 
 </body>
