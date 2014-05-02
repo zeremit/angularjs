@@ -1,12 +1,16 @@
 package com.kharevich.repository;
 
 import com.kharevich.domain.BaseEntity;
+import com.kharevich.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import java.io.Serializable;
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -99,6 +103,19 @@ public class RepositoryImpl implements Repository {
     interface CallBack<T> {
         <S extends Serializable> T doAction(S obj);
     }
+
+    public Integer countPersons() {
+        Query query = entityManager.createQuery("SELECT COUNT(p.id) FROM User p");
+        return ((Long) query.getSingleResult()).intValue();
+    }
+
+    public <T extends BaseEntity> List<T> findPersons(final Class<T> clazz,int startPosition, int maxResults, String sortFields, String sortDirections) {
+        TypedQuery<T> query = entityManager.createQuery("SELECT p FROM User p ", clazz);
+        query.setFirstResult(startPosition);
+        query.setMaxResults(maxResults);
+        return query.getResultList();
+    }
+
 }
 
 
