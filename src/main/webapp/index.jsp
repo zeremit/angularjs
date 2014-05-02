@@ -1,31 +1,37 @@
-<!doctype html>
-<html lang="en" ng-app>
+<html ng-app="phonecatApp" ng-controller="PhoneListCtrl">
 <head>
-    <meta charset="utf-8">
-    <title>My HTML File</title>
-    <link rel="stylesheet" href="lib/bootstrap.min.css">
     <script src="lib/angular.min.js"></script>
+    <script src="js/controllers.js"></script>
+    <title ng-bind-template="Google Phone Gallery: {{query}}">Google Phone Gallery</title>
 </head>
 <body>
 
-<ul>
-    <li>
-        <span>Nexus S</span>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span2">
+            <!--Sidebar content-->
 
-        <p>
-            Fast just got faster with Nexus S.
-        </p>
-    </li>
-    <li>
-        <span>Motorola XOOM™ with Wi-Fi</span>
+            Search: <input ng-model="query">
+            Sort by:
+            <select ng-model="orderProp">
+                <option value="name">Alphabetical</option>
+                <option value="age">Newest</option>
+            </select>
 
-        <p>
-            The Next, Next Generation tablet.
-        </p>
-    </li>
-</ul>
+        </div>
+        <div class="span10">
+            <!--Body content-->
+            {{orderProp}}
+            <ul class="phones">
+                <li ng-repeat="phone in phones | filter:query | orderBy:orderProp">
+                    {{phone.name}}
+                    <p>{{phone.snippet}}</p>
+                </li>
+            </ul>
 
-<p>Total number of phones: 2</p>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
